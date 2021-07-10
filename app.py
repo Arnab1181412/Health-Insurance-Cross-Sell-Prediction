@@ -57,7 +57,7 @@ def submit():
        Policy_Sales_Channel + Vehicle_Damage_Yes]])
         
         if y==1:
-            prediction_text = 'Congratulations!! Your client will buy the insurace. '
+            prediction_text = 'Congratulations!! Your client will buy the insurance. '
             return render_template('index.html', prediction_text=prediction_text)
             
         else:
