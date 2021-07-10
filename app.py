@@ -7,14 +7,6 @@ app = Flask(__name__)
 def welcome():
     return render_template('index.html')
 
-@app.route('/buy')
-def buy():
-    return 'Congratulations!! Your client will buy the insurace.'
-
-@app.route('/notbuy')        
-def notbuy():
-    return 'Unfortunately, Your client will not take the insurance.'
-
 model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/submit',methods=['GET','POST'])
@@ -65,12 +57,12 @@ def submit():
        Policy_Sales_Channel + Vehicle_Damage_Yes]])
         
         if y==1:
-            
-            return redirect(url_for('buy'))
+            prediction_text = 'Congratulations!! Your client will buy the insurace. '
+            return render_template('index.html', prediction_text=prediction_text)
             
         else:
-            
-            return redirect(url_for('notbuy'))
+            prediction_text = 'Unfortunately, Your client will not take the insurance.'
+            return render_template('index.html', prediction_text=prediction_text)
         
         
 if __name__ == '__main__':
